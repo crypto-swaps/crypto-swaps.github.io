@@ -1,0 +1,17 @@
+{
+  "name": "Crypto Swaps",
+  "short_name": "Crypto Swaps",
+  "description": "Crypto Swaps lets you swap tokens from your own wallet with a preview-only route before you enter the app.",
+  "start_url": "https://crypto-swaps.github.io/",
+  "scope": "https://crypto-swaps.github.io/",
+  "display": "standalone",
+  "background_color": "#07100D",
+  "theme_color": "#34C08A",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}
