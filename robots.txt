@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://crypto-swaps.github.io/sitemap.xml
