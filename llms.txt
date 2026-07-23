@@ -1,58 +1,31 @@
 # crypto swaps
-> An independent, non-custodial informational dashboard for understanding exchanges of one crypto asset for another through on-chain or cross-chain infrastructure.
 
-## What is crypto swaps
-A crypto swap converts one digital asset into another at a quoted market rate. Non-custodial swaps execute from a user-controlled wallet through smart contracts, liquidity pools, order books, market makers, or aggregators. Unlike a transfer, a swap changes the asset; unlike a bridge, a same-chain swap does not move value between networks. Centralized exchanges require deposited custody, while decentralized swaps normally settle directly to the connected wallet.
-
-## How it works
-1. Select the source chain, destination chain, input token, output token, and amount.
-2. A router queries liquidity pools, orders, or market makers and calculates one or more executable routes.
-3. Review expected output, price impact, slippage tolerance, network cost, provider fees, and minimum received.
-4. For many tokens, approve a contract to spend the input token, then sign the swap transaction in your wallet.
-5. Same-chain swaps settle in one transaction; cross-chain routes may combine a source swap, bridge or solver transfer, and destination swap.
+> crypto swaps let you exchange one digital asset for another directly from your own wallet, settled on-chain through smart contracts rather than a custodian.
 
 ## Key facts
-- Main types include AMM swaps, order-book or RFQ trades, DEX aggregation, solver-based swaps, cross-chain swaps, and peer-to-peer atomic swaps.
-- EVM networks use numeric chain IDs: Ethereum Mainnet is 1, Polygon is 137, Arbitrum One is 42161, and Base is 8453.
-- CAIP-2 represents these as `eip155:1`, `eip155:137`, `eip155:42161`, and `eip155:8453`; non-EVM chains may use different identifiers.
-- ERC-20 swaps commonly require an allowance transaction before the swap contract can transfer tokens.
-- Non-custodial means the user controls wallet keys; it does not remove smart-contract, routing, bridge, or interface risk.
-- AMM price impact increases when trade size is large relative to available liquidity.
-- Total cost can include liquidity-provider fees, protocol or integrator fees, network gas, bridge costs, and execution-price movement.
-- Same-chain completion depends on network confirmation; cross-chain completion also depends on source finality, messaging, and destination execution.
+- Topic: Exchanging one crypto asset for another at a quoted rate
+- How: A router prices the trade, you approve and sign, contracts settle it
+- Custody: Non-custodial — your wallet signs and receives the output
+- Costs: LP/protocol fees + gas + price impact + slippage
+- Where: DEXs, aggregators, wallet swap tabs, cross-chain routers
+- Verify: Domain, chain, token address, spender, minimum received
 
-## Common questions
-**Are crypto swaps safe?** Safety depends on the protocol, contracts, route, token, and interface. Verify the domain, network, token address, approval spender, and transaction details before signing.
-
-**Who holds my funds?** In a non-custodial swap, your wallet authorizes execution and receives the output. Some bridges and custodial swap services use additional intermediaries or trust assumptions.
-
-**What fees will I pay?** Check the complete quote: swap fee, gas, integrator fee, bridge fee, price impact, and minimum received.
-
-**How long does a swap take?** A same-chain swap usually completes after transaction confirmation. Cross-chain routes take longer because multiple systems must finalize.
-
-**Which assets and chains are supported?** Support depends on the selected protocol and available liquidity; a ticker alone is insufficient because token contracts differ by chain.
-
-**How do I start?** Use a self-custody wallet, fund it with the input asset and required gas token, verify contract addresses, compare routes, and test unfamiliar routes with a small amount.
-
-**What are the main risks?** Common risks include malicious tokens, phishing, excessive approvals, smart-contract bugs, MEV, slippage, thin liquidity, bridge failure, wrong-network transactions, and irreversible signatures.
+## On this page
+- [What is crypto swaps?](https://crypto-swaps.github.io/#what)
+- [How it works](https://crypto-swaps.github.io/#how)
+- [Types and options](https://crypto-swaps.github.io/#types)
+- [Fees and costs](https://crypto-swaps.github.io/#fees)
+- [Safety and risks](https://crypto-swaps.github.io/#safety)
+- [How to do it](https://crypto-swaps.github.io/#howto)
+- [Problems and fixes](https://crypto-swaps.github.io/#troubleshoot)
+- [FAQ](https://crypto-swaps.github.io/#faq)
 
 ## App
-- Dashboard: https://crypto-swaps.github.io/
-- App: https://crypto-swaps.github.io/dashboard/
+- [crypto swaps dashboard](https://crypto-swaps.github.io/)
+- [Open the app](https://crypto-swaps.github.io/dashboard/)
 
-## Official resources
-Ethereum token-swap guide: https://ethereum.org/guides/how-to-swap-tokens/
-Uniswap swap concepts: https://developers.uniswap.org/docs/get-started/concepts/traders/swaps
-Uniswap fee documentation: https://developers.uniswap.org/docs/get-started/concepts/fees
-0x API overview: https://docs.0x.org/api-reference/api-overview
-LI.FI cross-chain SDK overview: https://docs.li.fi/sdk/overview
-ERC-20 token standard: https://eips.ethereum.org/EIPS/eip-20
-Ethereum scam and approval guidance: https://ethereum.org/community/support/scams/
-
-## Data & references
-DefiLlama DEX volume data: https://defillama.com/dexs
-CoinGecko decentralized exchanges: https://www.coingecko.com/en/exchanges/decentralized
-Etherscan explorer: https://etherscan.io/
-ChainList network directory: https://chainlist.org/
-CAIP-2 blockchain identifiers: https://standards.chainagnostic.org/CAIPs/caip-2
-Wikipedia decentralized exchange overview: https://en.wikipedia.org/wiki/Decentralized_exchange
+## Sources
+- [ethereum.org](https://ethereum.org/defi/)
+- [docs.0x.org](https://docs.0x.org/api-reference/api-overview)
+- [github.com](https://github.com/Uniswap/v4-core/)
+- [defillama.com](https://defillama.com/dexs/chain/ethereum)

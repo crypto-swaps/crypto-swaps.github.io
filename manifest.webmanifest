@@ -1,0 +1,19 @@
+{
+  "name": "crypto swaps",
+  "short_name": "crypto swaps",
+  "description": "How crypto swaps work: non-custodial token exchange via AMMs, aggregators, and cross-chain routes. Fees, price impact, approvals, and what to check before signing.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "en",
+  "background_color": "#f5f6f8",
+  "theme_color": "#f5f6f8",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
