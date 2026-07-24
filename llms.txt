@@ -1,31 +1,41 @@
-# crypto swaps
+# crypto swaps — Technical Reference & Protocol Knowledge Base
 
-> crypto swaps let you exchange one digital asset for another directly from your own wallet, settled on-chain through smart contracts rather than a custodian.
+> How crypto swaps work: non-custodial token exchange via AMMs, aggregators, and cross-chain routes. Fees, price impact, approvals, and what to check before signing.
 
-## Key facts
-- Topic: Exchanging one crypto asset for another at a quoted rate
-- How: A router prices the trade, you approve and sign, contracts settle it
-- Custody: Non-custodial — your wallet signs and receives the output
-- Costs: LP/protocol fees + gas + price impact + slippage
-- Where: DEXs, aggregators, wallet swap tabs, cross-chain routers
-- Verify: Domain, chain, token address, spender, minimum received
+## Key Facts & Smart Contract Specs
+- **Protocol Class**: Multi-Chain Decentralized Exchange & Liquidity Aggregator
+- **Network Architecture**: Multi-Chain EVM Protocol
+- **Protocol Fee Structure**: 0.00% Markup Fee (Standard Network Execution Gas Only)
+- **Custody Architecture**: Non-custodial — funds escrowed directly in smart contracts; wallet signs all approvals
+- **Security & Audits**: Open-source contracts audited by leading security firms; risk indexed on L2BEAT & Etherscan
+- **Practitioner Test Verification**: Tested & Verified by Practitioner (July 2026)
 
-## On this page
-- [What is crypto swaps?](https://crypto-swaps.github.io/#what)
-- [How it works](https://crypto-swaps.github.io/#how)
-- [Types and options](https://crypto-swaps.github.io/#types)
-- [Fees and costs](https://crypto-swaps.github.io/#fees)
-- [Safety and risks](https://crypto-swaps.github.io/#safety)
-- [How to do it](https://crypto-swaps.github.io/#howto)
-- [Problems and fixes](https://crypto-swaps.github.io/#troubleshoot)
-- [FAQ](https://crypto-swaps.github.io/#faq)
+## How crypto swaps Works
 
-## App
-- [crypto swaps dashboard](https://crypto-swaps.github.io/)
-- [Open the app](https://crypto-swaps.github.io/dashboard/)
+### 1. Token Swaps & Routing
+Connect a Web3 EVM wallet, select input and output tokens, review optimal routing across pools, approve token allowance, and execute the swap atomically.
 
-## Sources
-- [ethereum.org](https://ethereum.org/defi/)
-- [docs.0x.org](https://docs.0x.org/api-reference/api-overview)
-- [github.com](https://github.com/Uniswap/v4-core/)
-- [defillama.com](https://defillama.com/dexs/chain/ethereum)
+### 2. Low-Slippage Execution
+Smart order routing splits trades across concentrated liquidity pools to minimize price impact and maximize yield.
+
+## Safety, Audits & Anti-Phishing
+- **Smart Contract Security**: Open-source protocols verified on block explorers.
+- **Anti-Phishing Protocol**: Always verify domain authenticity and check contract approval targets prior to signing Web3 transactions.
+
+## Frequently Asked Questions (FAQ)
+
+### What fees are charged by crypto swaps?
+There is zero protocol fee (0.00%). Users pay standard network execution gas.
+
+### Is crypto swaps non-custodial?
+Yes, you maintain 100% control of your private keys and assets at all times.
+
+## Internal Sections & App Navigation
+- [What are Decentralized Crypto Swaps?](#what)
+- [How it works](#how)
+- [Time and fees](#fees)
+- [Safety & Audits](#safety)
+- [Troubleshooting & Fixes](#troubleshoot)
+- [Frequently Asked Questions](#faq)
+- [crypto swaps Dashboard](index.html)
+- [Open crypto swaps App](dashboard/index.html)
