@@ -1,249 +1,283 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Swaps — How Exchanging One Token for Another Works</title>
-<meta name="description" content="Crypto Swaps let you exchange one digital asset for another through a DEX liquidity pool or a CEX order book. Learn slippage, price impact, fees, gas and wrapped assets before you trade.">
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crypto Swaps — Swap ETH, USDC and USDT</title>
+<meta name="description" content="Crypto Swaps is a non-custodial interface to swap ETH, USDC, USDT and major tokens on Ethereum through on-chain DEX routing, signed from your own wallet.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f6f5f4">
 <link rel="canonical" href="https://crypto-swaps.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Crypto Swaps">
-<meta property="og:url" content="https://crypto-swaps.github.io/">
-<meta property="og:image" content="https://crypto-swaps.github.io/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Crypto Swaps">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Figtree:wght@500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://crypto-swaps.github.io/#website", "url": "https://crypto-swaps.github.io/", "name": "Crypto Swaps — How Exchanging One Token for Another Works"}, {"@type": "WebPage", "@id": "https://crypto-swaps.github.io/#webpage", "url": "https://crypto-swaps.github.io/", "name": "Crypto Swaps — How Exchanging One Token for Another Works", "isPartOf": {"@id": "https://crypto-swaps.github.io/#website"}, "description": "Crypto Swaps let you exchange one digital asset for another through a DEX liquidity pool or a CEX order book. Learn slippage, price impact, fees, gas and wrapped assets before you trade.", "datePublished": "2026-11-01", "dateModified": "2026-11-01"}, {"@type": "SoftwareApplication", "name": "Crypto Swaps", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://crypto-swaps.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Crypto Swaps"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are Crypto Swaps?", "acceptedAnswer": {"@type": "Answer", "text": "Crypto Swaps are trades that exchange one cryptocurrency directly for another, priced in real time by either an on-chain liquidity pool or a centralized order book, with no cash step in between."}}, {"@type": "Question", "name": "What is the difference between a DEX swap and a CEX swap?", "acceptedAnswer": {"@type": "Answer", "text": "A DEX swap trades against an automated liquidity pool and stays in your self-custody wallet the entire time. A CEX swap matches against a centralized order book and holds your assets in the exchange's custody until you withdraw."}}, {"@type": "Question", "name": "What causes slippage in a crypto swap?", "acceptedAnswer": {"@type": "Answer", "text": "Slippage is the gap between the quoted price and the price that actually executes, caused by other trades moving the pool or order book between the moment you quote and the moment your transaction confirms."}}, {"@type": "Question", "name": "What is price impact?", "acceptedAnswer": {"@type": "Answer", "text": "Price impact is the portion of slippage you cause yourself by trading an amount large relative to the pool's depth. A bigger trade against a shallow pool moves the price more than the same trade against a deep one."}}, {"@type": "Question", "name": "Why do I need to approve a token before swapping it?", "acceptedAnswer": {"@type": "Answer", "text": "A decentralized exchange's contract needs permission to move a token out of your wallet. That one-time approval sets a limit on how much the contract can spend, and should be reviewed or revoked once you stop using that pool."}}, {"@type": "Question", "name": "Do Crypto Swaps always involve gas fees?", "acceptedAnswer": {"@type": "Answer", "text": "On-chain swaps always need network gas to execute the transaction, in addition to any pool fee. Swaps on a centralized exchange settle on an internal ledger and typically charge only a trading fee, with no gas."}}, {"@type": "Question", "name": "What is a wrapped asset in a crypto swap?", "acceptedAnswer": {"@type": "Answer", "text": "A wrapped asset is a token on one chain backed one-to-one by a native asset on another chain, letting that value trade in pools and swaps on a network it was never originally issued on."}}]}]}</script>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Crypto Swaps"><meta property="og:title" content="Crypto Swaps — Swap ETH, USDC and USDT"><meta property="og:description" content="Crypto Swaps is a non-custodial interface to swap ETH, USDC, USDT and major tokens on Ethereum through on-chain DEX routing, signed from your own wallet."><meta property="og:url" content="https://crypto-swaps.github.io/"><meta property="og:image" content="https://crypto-swaps.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Crypto Swaps — Swap ETH, USDC and USDT"><meta name="twitter:description" content="Crypto Swaps is a non-custodial interface to swap ETH, USDC, USDT and major tokens on Ethereum through on-chain DEX routing, signed from your own wallet."><meta name="twitter:image" content="https://crypto-swaps.github.io/og-image.png">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://crypto-swaps.github.io/#organization","name":"Crypto Swaps","url":"https://crypto-swaps.github.io/","description":"Crypto Swaps is a non-custodial interface to swap ETH, USDC, USDT and major tokens on Ethereum through on-chain DEX routing, signed from your own wallet.","logo":{"@type":"ImageObject","@id":"https://crypto-swaps.github.io/#logo","url":"https://crypto-swaps.github.io/icon.svg","caption":"Crypto Swaps"}},{"@type":"WebSite","@id":"https://crypto-swaps.github.io/#website","url":"https://crypto-swaps.github.io/","publisher":{"@id":"https://crypto-swaps.github.io/#organization"},"name":"Crypto Swaps"},{"@type":"WebPage","@id":"https://crypto-swaps.github.io/#webpage","url":"https://crypto-swaps.github.io/","publisher":{"@id":"https://crypto-swaps.github.io/#organization"},"name":"Crypto Swaps — Swap ETH, USDC and USDT","isPartOf":{"@id":"https://crypto-swaps.github.io/#website"},"mainEntity":{"@id":"https://crypto-swaps.github.io/#app"},"breadcrumb":{"@id":"https://crypto-swaps.github.io/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://crypto-swaps.github.io/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://crypto-swaps.github.io/"},{"@type":"ListItem","position":2,"name":"Crypto Swaps","item":"https://crypto-swaps.github.io/"}]},{"@type":"WebApplication","@id":"https://crypto-swaps.github.io/#app","url":"https://crypto-swaps.github.io/","publisher":{"@id":"https://crypto-swaps.github.io/#organization"},"name":"Crypto Swaps","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Crypto Swaps is a non-custodial interface to swap ETH, USDC, USDT and major tokens on Ethereum through on-chain DEX routing, signed from your own wallet.","isPartOf":{"@id":"https://crypto-swaps.github.io/#website"}},{"@type":"FAQPage","@id":"https://crypto-swaps.github.io/#faq","isPartOf":{"@id":"https://crypto-swaps.github.io/#webpage"},"about":{"@id":"https://crypto-swaps.github.io/#app"},"name":"Crypto Swaps FAQ","mainEntity":[{"@type":"Question","name":"What is Crypto Swaps used for?","acceptedAnswer":{"@type":"Answer","text":"It is used to exchange one token for another on Ethereum, such as ETH, USDC, USDT and other major tokens, directly from your own wallet. The trade is routed through on-chain DEX liquidity and settles in a single transaction."}},{"@type":"Question","name":"Do I need an account to swap?","acceptedAnswer":{"@type":"Answer","text":"No. You connect a wallet and sign each transaction yourself, with no sign-up or identity check on the interface. Your funds stay in your wallet unless you approve a swap."}},{"@type":"Question","name":"Which tokens can I swap?","acceptedAnswer":{"@type":"Answer","text":"ETH, USDC, USDT and other major ERC-20 tokens on Ethereum are the focus. Availability for any pair depends on whether on-chain liquidity exists for it, which the quote will show."}},{"@type":"Question","name":"Why do I need to approve a token first?","acceptedAnswer":{"@type":"Answer","text":"ERC-20 tokens require a one-time allowance before a router can move them for you. The approval is a separate transaction that costs gas. Native ETH does not need one."}},{"@type":"Question","name":"What is slippage and how do I set it?","acceptedAnswer":{"@type":"Answer","text":"Slippage is the gap between the quoted output and what you actually receive if the price moves before your swap settles. A tighter tolerance protects the price but can make the swap fail, while a looser one is more likely to go through."}},{"@type":"Question","name":"Why do I still need ETH if I swap stablecoins?","acceptedAnswer":{"@type":"Answer","text":"Gas on Ethereum is always paid in native ETH. Even when you sell USDC or USDT, you need a small ETH balance to approve and sign the transaction."}}]}]}
+</script>
 <style>
-:root{--bg:#0D0F0A;--surface:#181C12;--text:#EEF2E6;--muted:#95997F;--accent:#A3E635;--accent-ink:#111600;--radius:15px;--display:"Figtree";--body:"Inter"}
+@font-face{font-family:'Inter';src:url('assets/inter.woff2') format('woff2');font-weight:400 700;font-display:swap}
+@font-face{font-family:'Space Grotesk';src:url('assets/space-grotesk.woff2') format('woff2');font-weight:500 700;font-display:swap}
+:root{
+ --bg:#f6f5f4;--card:#fff;--ink:#17181c;--muted:#737b88;--faint:#aeb4bf;
+ --line:#ecebe9;--line-2:#e3e1de;--panel:#f8f7f6;--panel-2:#efedeb;
+ --accent:#4f46e5;--accent-hover:#463eca;--accent-ink:#3b34ac;--accent-soft:#e6e5fb;--accent-on:#ffffff;--promo:#edecfc;--text-2:#4b5563;
+ --shadow:0 1px 2px rgba(13,17,28,.04),0 24px 56px -40px rgba(13,17,28,.24);--pico-bg:#fff;--pico-ring:rgba(13,17,28,.06);
+ --ease:cubic-bezier(.2,.7,.2,1);
+ --head:"Space Grotesk","Arial",sans-serif;--body:"Inter","Arial",sans-serif;color-scheme:light}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:2rem}
-body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.7 var(--body);-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-underline-offset:.22em}
-a:hover{text-decoration-thickness:2px}
-button,input,select,textarea{font:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
-::selection{background:var(--accent);color:var(--accent-ink)}
-.c08ef38{width:min(1180px,calc(100% - 64px));margin-inline:auto}
-.cc2c58b{position:absolute;top:1rem;left:1rem;z-index:5;padding:.6rem 1rem;background:var(--surface);border-radius:var(--radius);transform:translateY(-200%)}
-.cc2c58b:focus{transform:translateY(0)}
-.cffab2d{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:96px;border-bottom:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
-.c5d9d6c{display:inline-flex;align-items:center;gap:.7rem;color:var(--text);font:650 1.1rem/1.2 var(--display);text-decoration:none}
-.c0663c3{display:grid;place-items:center;width:36px;height:36px;background:var(--accent);color:var(--accent-ink);border-radius:calc(var(--radius) * .6)}
-.c0663c3 svg{width:22px;height:22px;fill:none;stroke:var(--accent-ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.c394dc6{display:flex;align-items:center;gap:1.7rem}
-.c394dc6>a:not(.c4b3f9f){color:var(--muted);font-size:.9rem;text-decoration:none}
-.c394dc6>a:hover{color:var(--text)}
-.c4b3f9f{padding:.6rem 1rem;border:1px solid color-mix(in srgb,var(--accent) 28%,transparent);border-radius:var(--radius);background:color-mix(in srgb,var(--accent) 7%,var(--surface));font-size:.9rem;font-weight:650;text-decoration:none}
-.c923988{padding-top:1.8rem;font-size:.82rem;color:var(--muted)}
-.ca82d4a{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:0;padding:0;list-style:none;color:var(--muted);font-size:.82rem}
-.ca82d4a ol,.ca82d4a ul{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:0;padding:0;list-style:none}
-.ca82d4a a{color:var(--muted)}
-.ca82d4a [aria-current]{color:var(--text)}
-.cf24f28{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);align-items:start;gap:clamp(1.75rem,5vw,4rem);padding:2.25rem 0 3.5rem}
-.c3bcb4c{min-width:0}
-.cbd3c07{display:inline-flex;align-items:center;gap:.6rem;margin:0 0 1.4rem;color:var(--muted);font-size:.88rem}
-.cbd3c07::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 10%,transparent)}
-h1{margin:0;font:550 clamp(2.6rem,4.9vw,4.65rem)/1.07 var(--display);letter-spacing:-.055em;overflow-wrap:anywhere;text-wrap:balance}
-h1 a{color:var(--accent)}
-.cfc5a41{max-width:48ch;margin:1.6rem 0 2rem;color:var(--muted);font-size:1.07rem;line-height:1.8}
-.c13971a{display:inline-flex;justify-content:center;align-items:center;gap:1.6rem;min-height:54px;padding:.9rem 1.4rem;border:1px solid color-mix(in srgb,var(--accent) 70%,var(--text));border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text)));color:var(--accent-ink);font-weight:650;text-decoration:none;box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 20%,transparent);transition:transform .2s ease,box-shadow .2s ease}
-.c13971a:hover{transform:translateY(-2px);box-shadow:0 12px 28px color-mix(in srgb,var(--accent) 28%,transparent)}
-.cd4c2c3{font-size:1.25rem;line-height:1}
-.c7645db{margin:1rem 0 0;color:var(--muted);font-size:.8rem}
-.c9aa1d4{position:relative;min-width:0;padding:12px;border:1px solid color-mix(in srgb,var(--accent) 15%,transparent);border-radius:calc(var(--radius) + 12px);background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 14%,var(--bg)),color-mix(in srgb,var(--accent) 3%,var(--bg)));box-shadow:0 30px 70px -25px color-mix(in srgb,var(--text) 20%,transparent)}
-.c43d611{padding:clamp(1.25rem,3vw,2rem);border:1px solid color-mix(in srgb,var(--text) 8%,transparent);border-radius:var(--radius);background:var(--surface);box-shadow:0 4px 14px color-mix(in srgb,var(--text) 4%,transparent)}
-.c408a3c{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.65rem}
-.c408a3c h2{margin:0;font:600 1.2rem/1.3 var(--display);letter-spacing:-.025em}
-.ca03d6d{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .6rem;border-radius:var(--radius);background:color-mix(in srgb,var(--accent) 9%,transparent);color:var(--accent);font-size:.72rem;white-space:nowrap}
-.ca03d6d::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
-.c278854{display:block;margin-bottom:.5rem;font-size:.83rem;font-weight:600}
-.c90a959{display:flex;align-items:center;gap:.5rem;padding:.65rem 1rem;border:1px solid color-mix(in srgb,var(--text) 16%,transparent);border-radius:var(--radius);background:var(--bg);transition:border-color .2s ease}
-.c90a959:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
-.c90a959 input{width:100%;min-width:0;padding:.25rem 0;border:0;background:var(--bg);color:var(--text);font:550 2rem/1.3 var(--display);font-variant-numeric:tabular-nums}
-.c90a959 input:focus-visible{outline-offset:2px}
-.cef6c44{color:var(--muted);font-size:.8rem}
-.cd967ca{margin:.5rem 0 1.3rem;color:var(--muted);font-size:.74rem}
-.c18cf4b{display:grid;grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);align-items:center;gap:.6rem;padding:1.1rem 0;border-top:1px solid color-mix(in srgb,var(--text) 8%,transparent);border-bottom:1px solid color-mix(in srgb,var(--text) 8%,transparent)}
-.cc8aa65{display:flex;flex-direction:column;align-items:center;gap:.45rem;min-width:0;color:var(--muted);font-size:.75rem}
-.cf8c2da{display:flex;align-items:center;justify-content:center;min-height:52px;max-width:100%;overflow-wrap:anywhere;color:var(--text);font-weight:600}
-.cf8c2da img,.cf8c2da svg{display:block;max-width:100%;width:auto;height:44px;object-fit:contain}
-.ca362d3{display:grid;place-items:center;width:32px;height:32px;border:1px solid color-mix(in srgb,var(--accent) 20%,transparent);border-radius:50%;background:color-mix(in srgb,var(--accent) 7%,var(--surface));color:var(--accent)}
-.cebbf85{padding:1.4rem 0 .25rem}
-.c962870{margin:0;color:var(--muted);font-size:.8rem}
-.c207876{display:flex;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin:.3rem 0 1rem}
-.c207876 output{font:550 clamp(1.65rem,3vw,2.5rem)/1.2 var(--display);letter-spacing:-.045em;color:var(--text);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
-.cdd06d3{display:grid;gap:.45rem;margin:0 0 1.2rem;font-size:.8rem}
-.cdd06d3>div{display:flex;justify-content:space-between;gap:1rem}
-.cdd06d3 dt{color:var(--muted)}
-.cdd06d3 dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
-.c43d611 .c13971a{width:100%;justify-content:space-between;min-height:50px;font-size:.9rem}
-.c7e324d{margin:1rem 0 0;color:var(--muted);font-size:.73rem;line-height:1.65}
-.cd8ccf7{margin:.6rem 0 0;color:var(--text);font-size:.8rem;font-weight:600}
-.cd8ccf7:empty{display:none}
-.ca9f1f0{padding:2.1rem 2.3rem;margin-bottom:4.5rem;border:1px solid color-mix(in srgb,var(--text) 9%,transparent);border-radius:var(--radius);background:linear-gradient(115deg,var(--surface),color-mix(in srgb,var(--accent) 4%,var(--surface)))}
-.c3a7110{margin:0 0 1.3rem;font:550 1.5rem/1.3 var(--display);letter-spacing:-.035em}
-.cc0af54{width:100%;border-collapse:collapse;text-align:left;font-size:.92rem}
-.cc0af54 caption{text-align:left;padding:0 0 1rem;color:var(--muted)}
-.cc0af54 th,.cc0af54 td{padding:1rem .9rem;border-bottom:1px solid color-mix(in srgb,var(--text) 9%,transparent);vertical-align:top;overflow-wrap:anywhere}
-.cc0af54 th{font-weight:600;color:var(--text)}
-.cc0af54 td{color:var(--muted)}
-.cc0af54 th:first-child,.cc0af54 td:first-child{padding-left:0}
-.cc0af54 tr:last-child>*{border-bottom:0}
-.cc0af54 thead th{font-size:.82rem;color:var(--muted)}
-.c3a143a{max-width:820px;margin-inline:auto}
-.c7e3e19{padding:0 0 2.6rem;margin:0 0 2.6rem;border-bottom:1px solid color-mix(in srgb,var(--text) 10%,transparent);scroll-margin-top:2rem}
-.c8238b8{margin:0 0 1.1rem;font:550 clamp(1.7rem,3vw,2.25rem)/1.2 var(--display);letter-spacing:-.04em;text-wrap:balance;overflow-wrap:anywhere}
-.ccd7dc1{color:var(--muted);font:400 1rem/1.85 var(--body);overflow-wrap:anywhere}
-.ccd7dc1 p{margin:0 0 1.15rem}
-.ccd7dc1 h3,.ccd7dc1 h4{margin:1.6rem 0 .65rem;color:var(--text);font:600 1.25rem/1.4 var(--display)}
-.ccd7dc1 strong{color:var(--text);font-weight:600}
-.ccd7dc1 ul,.ccd7dc1 ol{padding-left:1.4rem}
-.ccd7dc1 li{padding-left:.3rem;margin:.5rem 0}
-.ccd7dc1 li::marker{color:var(--accent)}
-.ccd7dc1 blockquote{margin:1.5rem 0;padding:1rem 1.4rem;border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;background:color-mix(in srgb,var(--accent) 6%,var(--surface));color:var(--text)}
-.ccd7dc1 img{max-width:100%;height:auto;border-radius:var(--radius)}
-.ccd7dc1>:last-child{margin-bottom:0}
-.cd0d08d{margin:.8rem 0;border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:var(--radius);background:var(--surface);overflow:hidden}
-.c07b758{position:relative;display:block;padding:1.25rem 3.5rem 1.25rem 1.4rem;cursor:pointer;list-style:none;color:var(--text);font:550 1.05rem/1.5 var(--display)}
-.c07b758::-webkit-details-marker{display:none}
-.c07b758::after{content:"+";position:absolute;right:1.4rem;top:1.25rem;color:var(--accent);font:400 1.4rem/1.1 var(--body)}
-.cd0d08d[open]>.c07b758::after,.cd0d08d details[open]>.c07b758::after{content:"−"}
-.cd0d08d[open]{border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
-.c07b758:focus-visible{outline-offset:-5px;border-radius:var(--radius)}
-.c095efd{padding:0 1.4rem 1.4rem;color:var(--muted);font-size:.95rem;line-height:1.8;overflow-wrap:anywhere}
-.c095efd>:first-child{margin-top:0}
-.c095efd>:last-child{margin-bottom:0}
-.cbac4c2{max-width:820px;margin:3.5rem auto 0;padding-top:2rem;border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
-.c181ad5{display:grid;gap:.7rem;margin:0;padding:0;list-style:none}
-.c69e88e{padding:.85rem 1rem;border:1px solid color-mix(in srgb,var(--text) 8%,transparent);border-radius:var(--radius);background:var(--surface);color:var(--muted);font-size:.86rem;overflow-wrap:anywhere}
-.c69e88e a{color:var(--text);text-decoration-color:color-mix(in srgb,var(--accent) 55%,transparent)}
-a.c69e88e{display:block;color:var(--text)}
-.c17bd08{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:4rem;padding:1.75rem 0 2rem;border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent);color:var(--muted);font-size:.8rem}
-.c17bd08 p{margin:0}
-.c17bd08 a{color:var(--muted)}
-@media(min-width:1500px){.cf24f28{padding-top:2.75rem;padding-bottom:4rem}}
-@media(max-width:850px){.cf24f28{grid-template-columns:1fr;gap:2.5rem;padding-top:2.5rem;padding-bottom:3rem}.c3bcb4c{max-width:640px}.c9aa1d4{width:100%;max-width:560px;justify-self:center}h1{font-size:clamp(2.5rem,7vw,4rem)}.cfc5a41{max-width:58ch}.ca9f1f0{margin-bottom:3rem}.c394dc6{gap:1rem}}
-@media(max-width:540px){.c08ef38{width:calc(100% - 32px)}.cffab2d{min-height:78px;gap:.75rem}.c5d9d6c{font-size:.95rem;gap:.5rem}.c0663c3{width:30px;height:30px}.c394dc6>a:not(.c4b3f9f){display:none}.c4b3f9f{padding:.5rem .75rem;font-size:.8rem}.c923988{padding-top:1.25rem}.cf24f28{padding-top:2rem;gap:2rem}h1{font-size:2.65rem}.cfc5a41{font-size:1rem}.c3bcb4c>.c13971a{width:100%}.c7645db{text-align:center}.c9aa1d4{padding:8px;border-radius:calc(var(--radius) + 8px)}.c43d611{padding:1.2rem}.ca9f1f0{padding:1.4rem 1.1rem}.cc0af54{display:block;overflow-x:auto}.cc0af54 th,.cc0af54 td{min-width:125px;padding:.8rem .65rem}.c07b758{padding-left:1rem}.c095efd{padding-left:1rem;padding-right:1rem}.c17bd08{align-items:flex-start;flex-direction:column;margin-top:3rem}.c7e3e19{margin-bottom:2rem;padding-bottom:2rem}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}.c13971a:hover{transform:none}}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;color:var(--ink);font:15px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:none;-webkit-mask-image:linear-gradient(#000 0,rgba(0,0,0,.35) 60%,transparent 100%);mask-image:linear-gradient(#000 0,rgba(0,0,0,.35) 60%,transparent 100%)}
+a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;background:none;border:0;color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-family:var(--head);font-weight:500;letter-spacing:-.01em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+
+.nav{display:flex;align-items:center;gap:24px;padding:16px 24px;max-width:1280px;margin:0 auto;width:100%}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);font-weight:500;font-size:20px;letter-spacing:-.02em;color:var(--ink);white-space:nowrap;flex:0 0 auto}
+.brand img{width:28px;height:28px}
+.nlinks{display:flex;align-items:center;gap:20px}
+.nlinks a{font-size:14px;font-weight:500;color:var(--muted);white-space:nowrap;transition:color .16s var(--ease)}
+.nlinks a:hover{color:var(--ink)}
+.spacer{flex:1}
+main{flex:1}
+.chain{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:10px;background:var(--panel-2);font-weight:500;font-size:14px;color:var(--ink);transition:background-color .16s var(--ease);flex:0 0 auto;white-space:nowrap}
+.chain img{width:20px;height:20px;border-radius:50%}
+.chain:hover{background:var(--line-2)}
+.chain .cv{width:12px;height:12px;color:var(--muted)}
+.connect{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:10px;background:var(--card);border:1px solid var(--line-2);color:var(--ink);font-weight:500;font-size:14px;transition:background-color .16s var(--ease),border-color .16s var(--ease);flex:0 0 auto;white-space:nowrap}
+.connect:hover{border-color:var(--faint);background:var(--panel)}
+
+.hero{display:flex;flex-direction:column;align-items:center;padding:32px 20px 48px}
+h1{font-size:clamp(36px,4.6vw,48px);line-height:1.08;letter-spacing:-.025em;text-align:center;color:var(--ink);margin:0 0 32px}
+
+.card{width:min(600px,100%);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:flex;align-items:center;gap:4px;padding:20px 20px 16px}
+.tab{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:10px;font-weight:500;font-size:14px;color:var(--muted);transition:background-color .16s var(--ease),color .16s var(--ease)}
+.tab:hover{background:var(--panel-2);color:var(--ink)}
+.tab.on{background:var(--accent-soft);color:var(--accent-ink)}
+.tabs .sp{flex:1}
+.tabs .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--muted);transition:background-color .16s var(--ease),color .16s var(--ease)}
+.tabs .ic:hover{background:var(--panel-2);color:var(--ink)}
+.tabs .ic svg{width:18px;height:18px}
+
+.promo{margin:0 20px;padding:32px;border-radius:12px;background:var(--promo);display:flex;align-items:center;gap:20px}
+.promo-txt{flex:1;min-width:0}
+.promo-h{font-family:var(--head);font-weight:500;font-size:clamp(22px,3.4vw,28px);line-height:1.2;letter-spacing:-.015em;color:var(--ink);margin:0 0 8px;text-wrap:balance}
+.promo-sub{font-size:15px;line-height:1.6;color:var(--text-2);margin:0;max-width:34ch}
+.promo-grid{flex:0 0 auto;display:grid;grid-template-columns:repeat(2,auto);gap:16px}
+.pico{width:52px;height:52px;border-radius:50%;background:var(--pico-bg);box-shadow:0 0 0 1px var(--pico-ring);display:grid;place-items:center;overflow:hidden}
+.pico img{width:100%;height:100%;object-fit:contain;display:block}
+.promo-flow{flex-direction:column;align-items:stretch;gap:24px}
+.promo-flow .promo-sub{max-width:44ch}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.flow li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.flow li+li::before{content:"";position:absolute;top:22px;right:calc(50% + 30px);width:calc(100% - 52px);height:1px;background:var(--line-2)}
+.fi{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:var(--pico-bg);box-shadow:0 0 0 1px var(--pico-ring);color:var(--accent-ink)}
+.fi img{width:100%;height:100%;display:block}
+.fi svg{width:20px;height:20px}
+.fi.on{background:var(--accent);color:var(--accent-on);box-shadow:none}
+.flow b{margin-top:4px;font-weight:500;font-size:14px;color:var(--ink)}
+.flow small{font-size:13px;line-height:1.4;color:var(--muted)}
+.cta-wrap{padding:20px}
+.cta{width:100%;height:60px;border-radius:12px;background:var(--accent);color:var(--accent-on);font-weight:500;font-size:16px;transition:background-color .16s var(--ease),transform .12s var(--ease)}
+.cta:hover{background:var(--accent-hover)}
+.cta:active{transform:scale(.99)}
+@media(max-width:470px){.promo{flex-direction:column;align-items:flex-start}.promo-grid{grid-template-columns:repeat(4,auto)}.promo-sub{max-width:none}}
+
+.learn{max-width:720px;margin:48px auto 0;width:100%;padding:0 24px 72px}
+.learn-h{font-size:14px;font-weight:500;color:var(--muted);text-align:center;margin:0 0 12px}
+.lrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:flex-start}
+.lcard{flex:0 0 auto;background:transparent;border:1px solid var(--line-2);border-radius:10px;transition:background-color .16s var(--ease),border-color .16s var(--ease)}
+.lcard>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;font-weight:500;font-size:14px;color:var(--text-2)}
+.lcard>summary::-webkit-details-marker{display:none}
+.lcard:hover{border-color:var(--faint);background:var(--card)}.lcard:hover>summary{color:var(--ink)}
+.lcard .chev{width:6px;height:6px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);margin-top:-4px;flex-shrink:0;transition:transform .16s var(--ease)}
+.lcard[open]{order:9;flex:0 0 100%;min-width:0;background:var(--card);border-color:var(--line-2);border-radius:16px;margin-top:8px}
+.lcard[open]>summary{height:auto;padding:20px 24px 0;color:var(--muted);font-size:13px}
+.lcard[open] .chev{transform:rotate(225deg);margin-top:4px}
+.lbody{padding:4px 24px 24px;max-width:660px}
+.lbody h2{font-size:22px;line-height:1.3;color:var(--ink);margin:8px 0 4px}
+.lbody h3{font-size:15px;line-height:1.4;color:var(--ink);margin:20px 0 4px}
+.lbody p{margin:0;font-size:15px;line-height:1.7;color:var(--text-2)}
+.lbody p+p{margin-top:8px}
+.lbody ul,.lbody ol{margin:8px 0 0;padding-left:20px}
+.lbody li{font-size:15px;line-height:1.7;color:var(--text-2);margin-bottom:4px}
+.lbody a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.lbody strong,.lbody b{color:var(--ink);font-weight:500}
+.lbody .tbl{overflow-x:auto;margin:16px 0 4px}
+.lbody table{width:100%;min-width:420px;border-collapse:collapse;font-size:14px}
+.lbody caption{text-align:left;color:var(--muted);font-size:13px;margin-bottom:8px}
+.lbody th,.lbody td{text-align:left;padding:8px 12px;border:1px solid var(--line-2);vertical-align:top;line-height:1.45}
+.lbody thead th{background:var(--panel);color:var(--ink);font-weight:500}
+.lbody tbody th{background:var(--panel);color:var(--muted);white-space:nowrap;font-weight:500}
+.lbody td{color:var(--text-2)}
+.lfaq h3{margin-top:16px;font-size:16px}
+
+footer{border-top:1px solid var(--line-2);background:var(--card)}
+.foot{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 24px 24px;color:var(--muted);font-size:13px}
+.foot a{color:var(--muted);transition:color .16s var(--ease)}.foot a:hover{color:var(--ink)}.foot .sep{color:var(--faint)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,8px);background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 16px;font-size:13px;box-shadow:0 16px 40px -16px rgba(13,17,28,.5);z-index:60;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+@media(max-width:1120px){.nlinks{display:none}}
+@media(max-width:720px){.chain span{display:none}.chain{padding:0 8px;gap:4px}}
+@media(max-width:560px){
+  .nav{padding:12px 16px;gap:8px}
+  .brand{font-size:16px}
+  .brand img{width:24px;height:24px}
+  .chain{height:36px;padding:0 8px;gap:4px}
+  .chain span{display:none}
+  .connect{height:36px;padding:0 12px;font-size:13px}
+  .hero{padding:24px 16px 40px}
+  .tabs{padding:16px 16px 12px}.promo{margin:0 16px;padding:24px}.cta-wrap{padding:16px}.cta{height:56px}
+  .learn{margin-top:40px;padding:0 16px 56px}
+}
 </style>
+<link rel="prerender" href="/dashboard/">
+<link rel="prefetch" href="/dashboard/" as="document">
+<link rel="preload" href="/dashboard/" as="document">
 </head>
-<body id="top">
-<a class="cc2c58b" href="#content">Skip to content</a>
-<header class="c08ef38">
-<nav class="cffab2d" aria-label="Main navigation">
-<a class="c5d9d6c" href="#top"><span class="c0663c3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>Swap guide</a>
-<div class="c394dc6"><a href="#key-facts">Key facts</a><a href="#sources">Sources</a><a class="c4b3f9f" href="dashboard/">Swap <span aria-hidden="true">↗</span></a></div>
-</nav>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-cv" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 6 5 5 5-5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.4 7 10 4-1.6 7-5.6 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="7" rx="5" ry="2.5"/><path d="M4 7v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V7"/><path d="M10 15.5c.6 1.2 2.6 2 5 2 2.8 0 5-1.1 5-2.5v-4c0-1.4-2.2-2.5-5-2.5"/><path d="M20 15v4c0 1.4-2.2 2.5-5 2.5s-5-1.1-5-2.5v-2"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/><path d="M12 14.5v2"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s-6 6.4-6 10.5a6 6 0 0 0 12 0c0-4.1-6-10.5-6-10.5z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.8 7.8 0 0 0 0-2l2-1.5-2-3.4-2.3 1a7.6 7.6 0 0 0-1.7-1L15 2.5h-4l-.4 2.6c-.6.3-1.2.6-1.7 1l-2.3-1-2 3.4L4.6 11a7.8 7.8 0 0 0 0 2l-2 1.5 2 3.4 2.3-1c.5.4 1.1.7 1.7 1l.4 2.6h4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.3 1 2-3.4z"/></symbol>
+</defs></svg>
+
+<header class="nav">
+  <a class="brand" href="index.html" aria-label="Crypto Swaps home"><img src="icon.svg" alt=""><span>Crypto Swaps</span></a>
+  <nav class="nlinks" aria-label="Primary">
+    <a href="#overview">What it is</a>
+    <a href="#compare">DEX vs exchange</a>
+    <a href="#how">How to swap</a>
+    <a href="#fees">Fees &amp; gas</a>
+    <a href="#security">Security</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="chain" href="/dashboard/" style="text-decoration:none"><img src="assets/coin-eth.svg" alt=""><span>Ethereum</span><svg class="cv" aria-hidden="true"><use href="#i-cv"/></svg></a>
+  <a class="connect" href="/dashboard/" style="text-decoration:none">Connect wallet</a>
 </header>
-<div class="c08ef38">
-<div class="c923988"><nav class="ca82d4a" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Crypto Swaps</span></nav></div>
-<section class="cf24f28" aria-labelledby="hero-title">
-<div class="c3bcb4c">
-<p class="cbd3c07">Plan your swap</p>
-<h1 id="hero-title">Crypto <em>Swaps</em>.</h1>
-<p class="cfc5a41">Crypto Swaps are how one digital asset becomes another without ever touching a traditional bank rail. You pick a token you hold and a token you want, a quote shows the rate, the fee and the amount you will receive, and once you confirm, the trade settles either inside an automated liquidity pool on-chain or against an order book on a centralized exchange. The two paths differ in custody, speed and cost, but the outcome is the same: one asset out, a different asset in, at a price set by supply and demand at that exact moment.</p>
-<a class="c13971a" href="dashboard/">Swap <span class="cd4c2c3" aria-hidden="true">↗</span></a>
-<p class="c7645db">Compare the route. Estimate the rate.</p>
-</div>
-<aside class="c9aa1d4" aria-labelledby="estimator-title">
-<div class="c43d611">
-<div class="c408a3c"><h2 id="estimator-title">Swap estimator</h2><span class="ca03d6d">Live estimate</span></div>
-<label class="c278854" for="amount">You pay</label>
-<div class="c90a959"><input id="amount" type="number" inputmode="decimal" min="1" max="1000000000" step="0.01" value="1000" aria-describedby="amount-help amount-error"><span class="cef6c44">units</span></div>
-<p class="cd967ca" id="amount-help">Enter 1–1,000,000,000 units, up to two decimal places.</p>
-<p class="cd8ccf7" id="amount-error" aria-live="polite"></p>
-<div class="c18cf4b" aria-label="Swap route">
-<div class="cc8aa65"><span>From</span><div class="cf8c2da"><img src="assets/tokens/btc.svg" alt="Bitcoin" width="28" height="28"></div></div>
-<span class="ca362d3" aria-hidden="true">→</span>
-<div class="cc8aa65"><span>To</span><div class="cf8c2da"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></div></div>
-</div>
-<div class="cebbf85" aria-live="polite" aria-atomic="true">
-<p class="c962870">Estimated amount received</p>
-<div class="c207876"><output id="received" for="amount">998.25</output><span class="cef6c44">units</span></div>
-<dl class="cdd06d3">
-<div><dt>Estimated fee</dt><dd><output id="fee" for="amount">1.75</output> units</dd></div>
-<div><dt>Estimated time</dt><dd><output id="time" for="amount">5–7 min</output></dd></div>
-</dl>
-</div>
-<a class="c13971a" href="dashboard/">Swap <span class="cd4c2c3" aria-hidden="true">→</span></a>
-<p class="c7e324d">Fee = 0.15% of the amount + 0.25 units. Time starts at 2–4 minutes, adding one minute for every tenfold increase from 1 unit, rounded up.</p>
-<noscript><p class="cd967ca">Enable JavaScript to update the estimate as you change the amount.</p></noscript>
-</div>
-</aside>
-</section>
-<section class="ca9f1f0" id="key-facts" aria-labelledby="facts-title">
-<h2 class="c3a7110" id="facts-title">Key facts</h2>
-<table class="cc0af54"><tbody><tr><th scope="row">Core mechanism</th><td>AMM liquidity pool or CEX order book</td></tr>
-<tr><th scope="row">Custody (DEX)</th><td>Self-custody — wallet signs the trade</td></tr>
-<tr><th scope="row">Custody (CEX)</th><td>Custodial — exchange holds the assets</td></tr>
-<tr><th scope="row">Price risk</th><td>Slippage and price impact on every trade</td></tr>
-<tr><th scope="row">Typical cost</th><td>Pool/trading fee plus network gas</td></tr>
-<tr><th scope="row">Settlement</th><td>On-chain finality (DEX) or internal ledger (CEX)</td></tr></tbody></table>
-</section>
-<main class="c3a143a" id="content">
-<section class="c7e3e19"><h2 class="c8238b8">What Crypto Swaps Are</h2><div class="ccd7dc1"><strong>Crypto Swaps are trades that exchange one cryptocurrency directly for another, at a rate set in real time by either an automated liquidity pool or a matched order book, with no cash leg in between.</strong> Unlike buying crypto with a card or a bank transfer, a swap moves value from one token to another in a single step — BTC to ETH, ETH to a stablecoin, or one ERC-20 token to another. The mechanism behind that single step is what separates the two major styles of Crypto Swaps available today.<h3>DEX swaps: trading against a pool</h3>On a decentralized exchange, a swap trades against a <strong>liquidity pool</strong> — a smart contract holding two reserves that a constant-product formula uses to price every trade, a design popularized by <a href="https://docs.uniswap.org/" rel="nofollow noopener" target="_blank">Uniswap docs</a>. There is no counterparty on the other side of your order; the pool itself is the market maker, and its contract code executes the trade the instant you sign.<h3>CEX swaps: trading against an order book</h3>A centralized exchange matches your swap against other users' resting orders in a conventional order book, the same structure traditional markets use. The exchange holds custody of both sides of the trade, settles it on its internal ledger instantly, and only moves assets on-chain when you later withdraw.<h3>Custodial vs self-custody</h3>The deepest difference between the two is custody. A DEX swap is <strong>self-custodial</strong> — your wallet signs the transaction and your keys never leave your device, as described in the <a href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="nofollow noopener" target="_blank">Wikipedia entry on decentralized exchanges</a>. A CEX swap is custodial — you deposit assets to the exchange's wallet and trust it to credit your account and honor withdrawals.</div></section>
-<section class="c7e3e19"><h2 class="c8238b8">How an AMM Prices Crypto Swaps</h2><div class="ccd7dc1">Most on-chain Crypto Swaps run through an automated market maker, or AMM. Instead of matching a buyer with a seller, the pool holds two assets in reserve and prices a trade using a formula — commonly x·y=k — that moves the exchange rate as the ratio of the two reserves shifts. Every swap changes that ratio a little, which is why a large trade against a small pool moves the price more than the same trade against a deep one.<h3>Liquidity providers and pool fees</h3>Pools are funded by liquidity providers who deposit both assets in a pair and earn a share of every trading fee charged on the pool in return. That fee, typically a fraction of a percent, is what makes providing liquidity worthwhile and is deducted automatically before your swap settles.</div></section>
-<section class="c7e3e19"><h2 class="c8238b8">Slippage, Price Impact, Fees and Gas in Crypto Swaps</h2><div class="ccd7dc1">Four numbers determine what you actually receive from a swap, and all four are shown before you confirm. <strong>Slippage</strong> is the gap between the quoted price and the price that executes once your transaction lands, caused by other trades or by the pool moving between quote and confirmation. <strong>Price impact</strong> is the portion of that gap you cause yourself, by trading a size large relative to the pool's depth. On top of both sits the pool or exchange fee, and for on-chain swaps, the network gas needed to execute the transaction, payable regardless of whether your price target was hit.<table><thead><tr><th>Factor</th><th>DEX swap</th><th>CEX swap</th></tr></thead><tbody><tr><td>Custody</td><td>Self-custody wallet</td><td>Exchange-held account</td></tr><tr><td>Price mechanism</td><td>AMM pool ratio</td><td>Order book matching</td></tr><tr><td>Typical cost</td><td>Pool fee + network gas</td><td>Trading fee, no gas</td></tr></tbody></table><h3>Setting a slippage tolerance</h3>Most swap interfaces let you set a maximum slippage tolerance, and the transaction reverts rather than fill at a worse price than you allowed. A tolerance set too tight can cause failed transactions during volatile periods; too loose, and a thin pool can hand you a materially worse rate than the quote suggested.<h3>Why gas varies between swaps</h3>Gas for an on-chain swap depends on network congestion and on how many steps the route takes — a direct pair is cheaper than a route split across several pools. You can verify exactly what a past transaction paid in gas and what price it executed at by looking up the transaction hash on <a href="https://etherscan.io/" rel="nofollow noopener" target="_blank">Etherscan</a>.</div></section>
-<section class="c7e3e19"><h2 class="c8238b8">Wrapped Assets and Cross-Chain Crypto Swaps</h2><div class="ccd7dc1">Many Crypto Swaps involve a <strong>wrapped asset</strong> — a token on one chain that represents and is backed one-to-one by a native asset on another, such as wrapped BTC circulating on an Ethereum-compatible chain. Wrapping lets an asset that was never native to a network participate in that network's pools and swaps without the original asset ever leaving its own chain, held instead by a custodian or a bridge contract.<h3>Same-chain swaps vs bridging first</h3>A straightforward swap trades two tokens that already live on the same network. Moving value between different blockchains is a separate action, usually called bridging, and is often combined with a swap at the end so the bridged asset lands as the token you actually wanted rather than its wrapped intermediate form.</div></section>
-<section class="c7e3e19"><h2 class="c8238b8">Approvals and the Risks Around Crypto Swaps</h2><div class="ccd7dc1">A self-custody swap on a decentralized exchange needs one extra step the first time you trade a given token: an on-chain <strong>approval</strong> that lets the exchange's contract move that token out of your wallet up to a limit you set. Granting an approval is routine, but an unlimited or forgotten approval left open on a token you no longer use is a standing risk if that contract is later exploited. Reviewing and revoking old approvals periodically keeps the number of contracts able to touch your funds as small as possible.<h3>Reading the quote before you sign</h3>Before signing any swap, check the minimum amount you will receive, the fee breakdown and the network the transaction runs on. A wallet that shows you a transaction you cannot read, or a price that moved dramatically between the quote and the confirm screen, is worth pausing on rather than rushing past.</div></section>
-<section class="c7e3e19"><h2 class="c8238b8">Completing Crypto Swaps Step by Step</h2><div class="ccd7dc1">The mechanics of a decentralized swap are consistent across most interfaces, which makes the process predictable once you have done it once.<ul><li>Connect a self-custody wallet and select the asset you are swapping from and the asset you want.</li><li>Enter the amount; the interface quotes the rate, the fee and the minimum amount you will receive.</li><li>Approve the token for the first swap of that asset, if it is not already approved.</li><li>Set a slippage tolerance appropriate to the pool's depth and current market volatility.</li><li>Sign the transaction and pay network gas; the swapped asset lands in your wallet once it confirms.</li></ul></div></section>
-<section class="c7e3e19"><h2 class="c8238b8">Choosing Where to Run Your Crypto Swaps</h2><div class="ccd7dc1">Neither style of Crypto Swaps is strictly better; they trade different things for different users. A DEX swap keeps you in self-custody and gives you access to almost any token with a pool, at the cost of gas and the responsibility of managing approvals yourself. A CEX swap is often cheaper per trade and needs no gas, but requires trusting the exchange with custody until you withdraw. For background on how these assets and their markets function more broadly, the <a href="https://en.wikipedia.org/wiki/Cryptocurrency" rel="nofollow noopener" target="_blank">Wikipedia overview of cryptocurrency</a> and the <a href="https://ethereum.org/en/defi/" rel="nofollow noopener" target="_blank">ethereum.org introduction to DeFi</a> are useful starting references before committing meaningful size to either route.</div></section><section class="c7e3e19 c239c94" id="related"><h2 class="c8238b8">Related tools</h2><div class="ccd7dc1"><ul><li><a href="https://xmr-swap.github.io/">Swap XMR explained</a></li><li><a href="https://arbitrumswap.github.io/">Arbitrum Swap</a></li><li><a href="https://swap-xrp.github.io/">XRP Swap guide</a></li><li><a href="https://stablecoin-swap.github.io/">Stablecoin Swap</a></li><li><a href="https://cowswap-app.github.io/">CowSwap</a></li></ul></div></section>
-<details class="cd0d08d"><summary class="c07b758">What are Crypto Swaps?</summary><div class="c095efd">Crypto Swaps are trades that exchange one cryptocurrency directly for another, priced in real time by either an on-chain liquidity pool or a centralized order book, with no cash step in between.</div></details>
-<details class="cd0d08d"><summary class="c07b758">What is the difference between a DEX swap and a CEX swap?</summary><div class="c095efd">A DEX swap trades against an automated liquidity pool and stays in your self-custody wallet the entire time. A CEX swap matches against a centralized order book and holds your assets in the exchange's custody until you withdraw.</div></details>
-<details class="cd0d08d"><summary class="c07b758">What causes slippage in a crypto swap?</summary><div class="c095efd">Slippage is the gap between the quoted price and the price that actually executes, caused by other trades moving the pool or order book between the moment you quote and the moment your transaction confirms.</div></details>
-<details class="cd0d08d"><summary class="c07b758">What is price impact?</summary><div class="c095efd">Price impact is the portion of slippage you cause yourself by trading an amount large relative to the pool's depth. A bigger trade against a shallow pool moves the price more than the same trade against a deep one.</div></details>
-<details class="cd0d08d"><summary class="c07b758">Why do I need to approve a token before swapping it?</summary><div class="c095efd">A decentralized exchange's contract needs permission to move a token out of your wallet. That one-time approval sets a limit on how much the contract can spend, and should be reviewed or revoked once you stop using that pool.</div></details>
-<details class="cd0d08d"><summary class="c07b758">Do Crypto Swaps always involve gas fees?</summary><div class="c095efd">On-chain swaps always need network gas to execute the transaction, in addition to any pool fee. Swaps on a centralized exchange settle on an internal ledger and typically charge only a trading fee, with no gas.</div></details>
-<details class="cd0d08d"><summary class="c07b758">What is a wrapped asset in a crypto swap?</summary><div class="c095efd">A wrapped asset is a token on one chain backed one-to-one by a native asset on another chain, letting that value trade in pools and swaps on a network it was never originally issued on.</div></details>
+
+<main>
+  <section class="hero">
+    <h1>Crypto Swaps</h1>
+
+    <section class="card" aria-label="Crypto Swaps">
+      <div class="tabs">
+        <button class="tab on" type="button">Swap</button>
+        <button class="tab" type="button">Status</button>
+        <span class="sp"></span>
+        <button class="ic gear" type="button" aria-label="Settings" data-toast="Settings are disabled in this demo."><svg aria-hidden="true"><use href="#i-gear"/></svg></button>
+      </div>
+
+      <div class="promo">
+        <div class="promo-txt">
+          <h2 class="promo-h">Swap ETH, USDC and USDT on Ethereum</h2>
+          <p class="promo-sub">Connect your own wallet, review the quote and sign. Routing runs through on-chain DEX liquidity.</p>
+        </div>
+        <div class="promo-grid" aria-hidden="true">
+          <span class="pico"><img src="assets/coin-eth.svg" alt=""></span>
+          <span class="pico"><img src="assets/tether-usdt.svg" alt=""></span>
+          <span class="pico"><img src="assets/usd-coin-usdc.svg" alt=""></span>
+          <span class="pico"><img src="assets/ethereum-eth.svg" alt=""></span>
+        </div>
+      </div>
+
+      <div class="cta-wrap"><a class="cta" href="/dashboard/" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Swap crypto</a></div>
+    </section>
+  </section>
+
+  <section class="learn" id="learn">
+    <p class="learn-h">Learn about crypto swaps</p>
+    <div class="lrow">
+      <details class="lcard" name="learn" id="overview"><summary><span>What it is</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>What crypto swaps are</h2>
+<h3>Token for token, straight from your wallet</h3>
+<p><strong>Crypto Swaps</strong> is an interface for exchanging one token for another on Ethereum, for example ETH for USDC or USDT for a major ERC-20 token. The swap happens on-chain through decentralized exchange liquidity, and the result lands in the same wallet you started from.</p>
+<h3>Routing across pools</h3>
+<p>Liquidity for a pair is usually spread over several pools. The interface searches those pools, builds a route and shows the expected output before anything is signed, so you see what you receive and what it costs.</p></div></details>
+
+      <details class="lcard" name="learn" id="compare"><summary><span>DEX vs exchange</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>On-chain swap vs exchange order</h2>
+<p>Swapping through a DEX route and placing an order on a centralized exchange solve the same need in different ways. The main differences are who holds the assets and how the price is set.</p>
+<div class="tbl"><table><caption>On-chain swap vs centralized exchange</caption><thead><tr><th scope="col"></th><th scope="col">On-chain swap</th><th scope="col">Exchange order</th></tr></thead><tbody><tr><th scope="row">Custody</th><td>your wallet</td><td>the exchange</td></tr><tr><th scope="row">Account</th><td>none, wallet only</td><td>sign-up and verification</td></tr><tr><th scope="row">Pricing</th><td>pool liquidity, shown in the quote</td><td>order book</td></tr><tr><th scope="row">Cost</th><td>gas plus pool or routing fee</td><td>exchange trading fee</td></tr></tbody></table></div>
+<h3>In practice</h3>
+<p>An on-chain swap keeps your tokens in your own wallet from start to finish. You trade the account and order book for a quote, a slippage setting and a gas fee.</p></div></details>
+
+      <details class="lcard" name="learn" id="how"><summary><span>How to swap</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>How to swap crypto</h2>
+<h3>Quote first, sign second</h3>
+<p>The interface shows the expected output, the route, the price impact and your slippage tolerance. Nothing is sent to the network until you confirm in your wallet.</p>
+<h3>Step by step</h3>
+<ol>
+<li>Connect your wallet and choose the token you sell and the token you want to buy.</li>
+<li>Enter an amount and review the quote, route and estimated gas.</li>
+<li>Approve the sell token once if it is an ERC-20 token you have not swapped from this wallet before.</li>
+<li>Sign the swap; it settles on Ethereum and the bought token arrives in your wallet.</li>
+</ol>
+<p>Selling native ETH needs no approval, because ETH is not an ERC-20 token.</p></div></details>
+
+      <details class="lcard" name="learn" id="fees"><summary><span>Fees &amp; gas</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>What a crypto swap costs</h2>
+<h3>Gas</h3>
+<p>Each on-chain step, approval and swap alike, is an Ethereum transaction paid in native ETH. See how <a href="https://ethereum.org/en/developers/docs/gas/" target="_blank" rel="nofollow noopener">gas works</a>.</p>
+<h3>Trading cost</h3>
+<p>Price impact, your slippage tolerance and any pool or routing fee are already reflected in the quoted output. Larger trades in thinner pools tend to move the price more.</p>
+<h3>Keep ETH for gas</h3>
+<p>Holding USDC or USDT does not pay for gas. Keep some native ETH in the wallet or you will not be able to approve or sign.</p></div></details>
+
+      <details class="lcard" name="learn" id="security"><summary><span>Security</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>Staying safe</h2>
+<h3>Non-custodial by design</h3>
+<p>You connect your own wallet and sign every transaction yourself. The interface quotes and routes; it never holds your funds or your keys.</p>
+<h3>Before you sign</h3>
+<ul>
+<li>Verify the token contract address; counterfeit tokens often copy the name and logo of real ones.</li>
+<li>Approve only the amount you need and revoke old <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/" target="_blank" rel="nofollow noopener">ERC-20</a> allowances you no longer use.</li>
+<li>Check the quote, price impact and slippage before confirming.</li>
+<li>Smart contracts can contain bugs, so risk is never zero.</li>
+</ul></div></details>
+
+      <details class="lcard" name="learn" id="faq"><summary><span>FAQ</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody lfaq"><h2>Crypto Swaps FAQ</h2>
+<h3>What is Crypto Swaps used for?</h3>
+<p>It is used to exchange one token for another on Ethereum, such as ETH, USDC, USDT and other major tokens, directly from your own wallet. The trade is routed through on-chain DEX liquidity and settles in a single transaction.</p>
+<h3>Do I need an account to swap?</h3>
+<p>No. You connect a wallet and sign each transaction yourself, with no sign-up or identity check on the interface. Your funds stay in your wallet unless you approve a swap.</p>
+<h3>Which tokens can I swap?</h3>
+<p>ETH, USDC, USDT and other major ERC-20 tokens on Ethereum are the focus. Availability for any pair depends on whether on-chain liquidity exists for it, which the quote will show.</p>
+<h3>Why do I need to approve a token first?</h3>
+<p>ERC-20 tokens require a one-time allowance before a router can move them for you. The approval is a separate transaction that costs gas. Native ETH does not need one.</p>
+<h3>What is slippage and how do I set it?</h3>
+<p>Slippage is the gap between the quoted output and what you actually receive if the price moves before your swap settles. A tighter tolerance protects the price but can make the swap fail, while a looser one is more likely to go through.</p>
+<h3>Why do I still need ETH if I swap stablecoins?</h3>
+<p>Gas on Ethereum is always paid in native ETH. Even when you sell USDC or USDT, you need a small ETH balance to approve and sign the transaction.</p></div></details>
+    </div>
+  </section>
 </main>
-<section class="cbac4c2" id="sources" aria-labelledby="sources-title">
-<h2 class="c3a7110" id="sources-title">Sources</h2>
-<ul class="c181ad5"><li><a class="c69e88e" href="https://docs.uniswap.org/" rel="nofollow noopener" target="_blank">Uniswap documentation</a></li>
-<li><a class="c69e88e" href="https://ethereum.org/en/defi/" rel="nofollow noopener" target="_blank">ethereum.org — DeFi</a></li>
-<li><a class="c69e88e" href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="nofollow noopener" target="_blank">Wikipedia — Decentralized exchange</a></li>
-<li><a class="c69e88e" href="https://etherscan.io/" rel="nofollow noopener" target="_blank">Etherscan</a></li></ul>
-</section>
-<footer class="c17bd08"><p>Updated Nov 01, 2026</p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></footer>
-</div>
+
+<footer>
+  <div class="foot"><span>&copy; 2026 Crypto Swaps</span><span class="sep">&middot;</span><a href="legal.html#privacy">Privacy</a><span class="sep">&middot;</span><a href="legal.html#terms">Terms</a><span class="sep">&middot;</span><span>Non-custodial &middot; Ethereum</span></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-(() => {
-  const amount = document.getElementById('amount');
-  const received = document.getElementById('received');
-  const fee = document.getElementById('fee');
-  const time = document.getElementById('time');
-  const error = document.getElementById('amount-error');
-  const format = new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  let timer;
-  function update() {
-    const value = amount.valueAsNumber;
-    if (!Number.isFinite(value) || !amount.validity.valid) {
-      amount.setAttribute('aria-invalid', 'true');
-      error.textContent = 'Enter an amount from 1 to 1,000,000,000 with up to two decimal places.';
-      received.value = '—';
-      fee.value = '—';
-      time.value = '—';
-      return;
-    }
-    amount.removeAttribute('aria-invalid');
-    error.textContent = '';
-    const amountCents = Math.round(value * 100);
-    const feeCents = Math.round(amountCents * 0.0015 + 25);
-    const minutes = 2 + Math.ceil(Math.log10(value));
-    received.value = format.format((amountCents - feeCents) / 100);
-    fee.value = format.format(feeCents / 100);
-    time.value = minutes + '–' + (minutes + 2) + ' min';
-  }
-  amount.addEventListener('input', () => {
-    clearTimeout(timer);
-    timer = setTimeout(update, 180);
-  });
-  amount.addEventListener('change', () => {
-    clearTimeout(timer);
-    update();
-  });
-  update();
+(function(){
+"use strict";
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.toggle('on',x===t);});});});
+
+var toast=document.getElementById('toast'),tT;
+function notify(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tT);tT=setTimeout(function(){toast.classList.remove('show');},3000);}
+[].slice.call(document.querySelectorAll('[data-toast]')).forEach(function(b){b.addEventListener('click',function(){notify(b.getAttribute('data-toast'));});});
+
+function openHash(){var id=location.hash.slice(1);if(!id)return;var c=document.getElementById(id);if(c&&c.matches&&c.matches('.lcard[name="learn"]'))c.open=true;}
+window.addEventListener('hashchange',openHash);openHash();
+[].slice.call(document.querySelectorAll('.nlinks a')).forEach(function(a){a.addEventListener('click',function(){var c=document.getElementById(a.getAttribute('href').slice(1));if(c&&c.matches('.lcard'))c.open=true;});});
 })();
 </script>
-</body>
-</html>
+</body></html>

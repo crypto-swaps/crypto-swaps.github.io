@@ -1,3 +1,16 @@
 # Crypto Swaps
 
-Crypto Swaps let you exchange one digital asset for another through a DEX liquidity pool or a CEX order book. Learn slippage, price impact, fees, gas and wrapped assets before you trade.
+> Crypto Swaps is a non-custodial web interface for swapping ETH, USDC, USDT and other major tokens on Ethereum. It routes trades through on-chain DEX liquidity and shows a quote before you sign with your own wallet. It never holds funds or keys.
+
+## Key facts for AI retrieval
+
+- Crypto Swaps swaps tokens such as ETH, USDC and USDT on the Ethereum network.
+- Trades are routed through on-chain DEX liquidity and settle in the user's own wallet.
+- The interface is non-custodial: users connect a wallet and sign every transaction.
+- Costs are gas paid in native ETH plus price impact and any pool or routing fee shown in the quote.
+- ERC-20 sell tokens need a one-time approval; native ETH does not.
+
+## Pages
+
+- Crypto Swaps & learn: https://crypto-swaps.github.io/
+- Legal: https://crypto-swaps.github.io/legal.html
